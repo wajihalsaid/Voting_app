@@ -16,13 +16,16 @@ chown -hR www-data:www-data /var/www/votingweb
 a2enmod headers
 a2enmod proxy_html
 a2enmod proxy_http
+a2enmod ssl
 
 # Disable default Apache site
 a2dissite 000-default
 
 # Setup VotingWeb Apache site
 cp votingweb.conf /etc/apache2/sites-available
+cp votingweb-ssl.conf /etc/apache2/sites-available
 a2ensite votingweb
+a2ensite votingweb-ssl
 
 # Setup VotingWeb as a service
 cp votingweb.service /etc/systemd/system
