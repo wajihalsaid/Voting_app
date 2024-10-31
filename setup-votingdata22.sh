@@ -29,6 +29,9 @@ sed -i "s/%USERNAME%/$2/g" /var/www/votingdata/appsettings.json
 # Third parameter is the password
 sed -i "s/%PASSWORD%/$3/g" /var/www/votingdata/appsettings.json
 
+# Fix SSL Issue
+sed -i "s/openssl_conf = openssl_init/#openssl_conf = openssl_init/g" /etc/ssl/openssl.cnf
+
 chown -hR www-data:www-data /var/www/votingdata
 
 # Enable required Apache modules
